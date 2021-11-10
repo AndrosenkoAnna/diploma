@@ -6,8 +6,15 @@ GENRE_CHOICES = (("Детектив", "детектив"), ("Фантастик�
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=150)
-    genre = models.CharField(max_length=100, choices=GENRE_CHOICES, default="Неизвестен")
-    content = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(null=True, blank=True)
+    title = models.CharField(max_length=150, verbose_name="Название")
+    author = models.CharField(max_length=100, default="Неизвестен", verbose_name="Автор")
+    genre = models.CharField(max_length=100, choices=GENRE_CHOICES,
+                             default="Неизвестен", verbose_name="Жанр")
+    content = models.TextField(blank=True, verbose_name="Описание")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Опубликовано")
+    image = models.ImageField(null=True, blank=True, verbose_name="Изображение")
+
+    class Meta:
+        verbose_name = 'Книга'
+        verbose_name_plural = 'Книги'
+        ordering = ['-created_at']
