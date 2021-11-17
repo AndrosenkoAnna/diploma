@@ -1,12 +1,17 @@
 # from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book
+from django.shortcuts import render
+from .models import Books
 
 
 def index(request):
-    book = Book.objects.all()
-    res = "<h1>All Books</h1>"
-    for item in book:
-        res += f"<div>{item.title}\n{item.content}</div>"
-    return HttpResponse(res)
+    books = Books.objects.all()
+    context = {
+        'books': books,
+        'title': 'Список книг'
+    }
+    return render(request, template_name='books/index.html', context=context)
 
+def view_books(request, books_id):
+    books_item = Books.objects.get(pk=books_id)
+    return render(request, 'books/view_news.html', {"books_item": books_item})

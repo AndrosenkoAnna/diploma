@@ -5,7 +5,7 @@ GENRE_CHOICES = (("Детектив", "детектив"), ("Фантастик�
                  ("Наука", "наука"), ("Детская", "детская"), ("Юмор", "юмор"))
 
 
-class Book(models.Model):
+class Books(models.Model):
     title = models.CharField(max_length=150, verbose_name="Название")
     author = models.CharField(max_length=100, default="Неизвестен", verbose_name="Автор")
     genre = models.CharField(max_length=100, choices=GENRE_CHOICES,
@@ -18,3 +18,6 @@ class Book(models.Model):
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
         ordering = ['-created_at']
+
+    def get_absolute_url(self):
+        return reverse('view_books', kwargs={"books_id": self.pk})
