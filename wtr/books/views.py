@@ -14,4 +14,4 @@ def index(request):
 
 def view_books(request, books_id):
     books_item = Books.objects.get(pk=books_id)
-    return render(request, 'books/view_news.html', {"books_item": books_item})
+    return render(request, 'books/view_books.html', {"books_item": books_item})

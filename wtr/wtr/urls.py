@@ -22,9 +22,8 @@ from books.views import index, view_books
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index),
+    path('', index, name='home'),
     path('books/<int:books_id>/', view_books, name='view_books'),
-
 ]
 
 # add route for mediafiles
