@@ -18,12 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from books.views import index, view_books
+from books.views import index, view_books, add_books
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
     path('books/<int:books_id>/', view_books, name='view_books'),
+    path('books/add-books/', add_books, name='add_books'),
 ]
 
 # add route for mediafiles
