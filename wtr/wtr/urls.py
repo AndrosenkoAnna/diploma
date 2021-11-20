@@ -18,13 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from books.views import index, view_books, add_books
+from books.views import index, view_books, add_books, register, user_login, user_logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
     path('books/<int:books_id>/', view_books, name='view_books'),
     path('books/add-books/', add_books, name='add_books'),
+    path('register/', register, name='register'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
