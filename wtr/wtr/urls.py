@@ -26,6 +26,8 @@ urlpatterns = [
     path('books/<int:books_id>/', view_books, name='view_books'),
     path('books/add-books/', add_books, name='add_books'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # add route for mediafiles
 if settings.DEBUG:

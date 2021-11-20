@@ -11,3 +11,6 @@ class BooksForm(forms.Form):
     }))
     genre = forms.ChoiceField(choices=GENRE_CHOICES, label="Жанр",
                               widget=forms.Select(attrs={"class": "form-control"}))
+    image = forms.ImageField()
+
+

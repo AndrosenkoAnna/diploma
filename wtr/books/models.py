@@ -13,7 +13,7 @@ class Books(models.Model):
                              default="Неизвестен", verbose_name="Жанр")
     content = models.TextField(blank=True, verbose_name="Описание")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Опубликовано")
-    image = models.ImageField(null=True, blank=True, verbose_name="Изображение")
+    image = models.ImageField(null=True, blank=True, upload_to='media', verbose_name="Изображение")
 
     class Meta:
         verbose_name = 'Книга'

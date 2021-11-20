@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Books
 from .forms import BooksForm
+from django.core.files.storage import FileSystemStorage
 
 
 def index(request):
@@ -20,10 +21,10 @@ def view_books(request, books_id):
 
 def add_books(request):
     if request.method == 'POST':
-        form = BooksForm(request.POST)
+        form = BooksForm(request.POST, request.FILES)
         if form.is_valid():
             # print(form.cleaned_data)
-            books = Books.objects.create(**form.cleaned_data)
+            Books.objects.create(**form.cleaned_data)
             return redirect('home')
     else:
         form = BooksForm()
