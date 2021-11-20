@@ -8,13 +8,14 @@
 {% block content %}
 <div class="card mb-3">
     <div class="card-header">
-        Жанр: <a href="{{ books_item.genre }}">{{ books_item.genre }}</a>
+        Жанр: <a href="">{{ books_item.genre }}</a>
     </div>
     <div class="card-body">
         <div class="media">
-            <img src="{{ books_item.image.url }}" alt="{{ books.title }}" class="w-50">
+            <img src="{{ books_item.image.url }}" width="250" alt="{{ books.title }}" class="w-50">
             <div class="media-body">
                 <h4 class="card-title">{{ books_item.title }}</h4>
+                <h7 class="card-author">{{ books_item.author }}</h7>
                 <p class="card-text">{{ books_item.content|safe|linebreaks }}</p>
             </div>
         </div>

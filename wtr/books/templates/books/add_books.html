@@ -23,6 +23,14 @@
     </div>
 
     <div class="form-group">
+        <label for="{{ form.author.id_for_label }}">Автор: </label>
+        {{ form.author }}
+        <div class="invalid-feedback">
+            {{ form.author.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="{{ form.content.id_for_label }}">Описание: </label>
         {{ form.content }}
         <div class="invalid-feedback">

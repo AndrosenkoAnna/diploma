@@ -32,9 +32,14 @@ class BooksForm(forms.Form):
         "class": "form-control",
         "rows": 5
     }))
+    author = forms.CharField(max_length=150, label="Автор",
+                             widget=forms.TextInput(attrs={"class": "form-control"}))
     genre = forms.ChoiceField(choices=GENRE_CHOICES, label="Жанр",
                               widget=forms.Select(attrs={"class": "form-control"}))
     image = forms.ImageField()
+
+
+
 
 
 

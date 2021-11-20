@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-{% for item in books %}
+{% for item in object_list %}
             <div class="card mb-3">
                 <div class="card-header">
                     Жанр: {{ item.genre }}
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="media">
                         {% if item.image %}
-                            <img src="{{ item.image.url }}" alt="" width="300" class="mr-3">
+                            <img src="{{ item.image.url }}" alt="" height="450" class="mr-1">
                         {% else %}
                             <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" class="mr-3">
                         {% endif %}
@@ -32,5 +32,3 @@
             </div>
             {% endfor %}
 {% endblock %}
-
-

@@ -1,20 +1,17 @@
-# from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.generic import ListView
 from .models import Books
 from .forms import BooksForm, UserRegisterForm, UserLoginForm
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, logout
+from django.core.paginator import Paginator
 
 
-def index(request):
-    books = Books.objects.all()
-    context = {
-        'books': books,
-        'title': 'ЧтоЧитать'
-    }
-    return render(request, template_name='books/index.html', context=context)
+class HomeBooks(ListView):
+    model = Books
+    paginate_by = 2
 
 
 def view_books(request, books_id):
@@ -63,3 +60,5 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
